@@ -1,5 +1,8 @@
-var wordFrequency = function(text) {
-  return createObjectHash(convertTextToArray(text));
+var wordFrequencyArray = function(text) {
+  var hash = createObjectHash(convertTextToArray(text));
+  var array = convertHashTo2DArray(hash);
+  var sortedArray = sortByWordFrequency(array);
+  return sortedArray;
 };
 
 var convertTextToArray = function(text) {
@@ -19,17 +22,32 @@ var createObjectHash = function(array) {
   return hash;
 };
 
+// Create a 2D array of [key, value] so we can use Array.prototype.sort()
+var convertHashTo2DArray = function(hash) {
+  var sortableArray = [];
+  for (var key in hash){
+    sortableArray.push([key, hash[key]]);
+  }
+  return sortableArray;
+};
+
+// Sort keys by value in descending order using functional expressions
+// More info on functional expressions: http://mzl.la/19buNlz
+var sortByWordFrequency = function(array) {
+  array.sort(function(a, b) {return b[1] - a[1]});
+  return array;
+};
+
 $(document).ready(function() {
   $("form#wordFrequency").submit(function(event) {
+    $("ul").empty();
     var text = $("input#userText").val();
-    var result = wordFrequency(text);
-    for (var word in result){
-      $("ul").append("<li>" + word + " : " + result[word] + "</li>");
+    var result = wordFrequencyArray(text);
+
+    for (var i = 0; i < result.length; i++) {
+      $("ul").append("<li>" + result[i][0] + " : " + result[i][1] + "</li>");
     }
-    console.log(result);
 
-
-    // $(".unstyled").show();
     $("#result").show();
     event.preventDefault();
   });

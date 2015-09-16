@@ -1,8 +1,8 @@
-describe("wordFrequency", function() {
-  it("returns word frequncy in the order they appear", function() {
-    var text = "Java is fun. But I think JavaScript is also fun. Yay java and javascript!";
-    var hash = {java: 2, is: 2, fun: 2, but: 1, i: 1, think: 1, javascript: 2, also: 1, yay: 1, and: 1};
-    expect(wordFrequency(text)).to.eql(hash);
+describe("wordFrequencyArray", function() {
+  it("returns 2D array of [key, value] by value", function() {
+    var text = "Fun java. Yay java!";
+    var sortedArray = [["java", 2], ["fun", 1], ["yay", 1]];
+    expect(wordFrequencyArray(text)).to.eql(sortedArray);
   });
 });
 
@@ -19,5 +19,21 @@ describe("createObjectHash", function() {
     var array = ["java", "js", "js", "java", "android", "mocha"];
     var hash = {java: 2, js: 2, android: 1, mocha: 1};
     expect(createObjectHash(array)).to.eql(hash);
+  });
+});
+
+describe("convertHashTo2DArray", function() {
+  it("returns an 2D array of [key, value] which stores hash keys and its values", function() {
+    var hash = {java: 2, js: 2, android: 1, mocha: 1};
+    var array = [["java", 2], ["js", 2], ["android", 1], ["mocha", 1] ];
+    expect(convertHashTo2DArray(hash)).to.eql(array);
+  });
+});
+
+describe("sortByWordFrequency", function() {
+  it("returns sorted keys by value in descending order using functional expressions", function() {
+    var array = [["java", 2], ["js", 3], ["android", 1], ["mocha", 1]];
+    var sortedArray = [["js", 3], ["java", 2], ["android", 1], ["mocha", 1]];
+    expect(sortByWordFrequency(array)).to.eql(sortedArray);
   });
 });
