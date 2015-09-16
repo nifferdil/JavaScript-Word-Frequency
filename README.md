@@ -12,7 +12,7 @@
 
 ## Setup
 
-* Clone this git repository on your computer ```git clone ##### ```
+* Clone this git repository on your computer ```git clone https://github.com/momo-ozawa/word-frequency-js.git```
 * To open in your browser, navigate to correct directory ```cd path/to/word-frequency-js``` and type ```open word-frequency.html```
 
 
