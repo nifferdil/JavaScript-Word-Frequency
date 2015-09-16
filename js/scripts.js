@@ -1,6 +1,6 @@
 var wordFrequency = function(text) {
   return createObjectHash(convertTextToArray(text));
-}
+};
 
 var convertTextToArray = function(text) {
   return text.toLowerCase().replace(/[^\w\s]/ig, "").split(" ");
@@ -20,17 +20,16 @@ var createObjectHash = function(array) {
 };
 
 $(document).ready(function() {
-  $("form#wordorder").submit(function(event) {
-    var text = $("input#text").val();
+  $("form#wordFrequency").submit(function(event) {
+    var text = $("input#userText").val();
     var result = wordFrequency(text);
+    for (var word in result){
+      $("ul").append("<li>" + word + " : " + result[word] + "</li>");
+    }
+    console.log(result);
 
-      $(".word").text(word);
-      if (!result) {
-        $(".not").text("not");
-      } else {
-        $(".not").empty();
-      }
 
+    // $(".unstyled").show();
     $("#result").show();
     event.preventDefault();
   });
