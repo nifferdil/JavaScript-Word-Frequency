@@ -1,4 +1,4 @@
-# _Word Order_
+# _Word Frequency_
 
 ##### A way to return a list of all the unique words and how many times they appeared in a block of text.
 
@@ -13,7 +13,7 @@
 ## Setup
 
 * Clone this git repository on your computer ```git clone ##### ```
-* To open in your browser, navigate to correct directory ```cd path/to/word-order-js``` and type ```open word-order.html```
+* To open in your browser, navigate to correct directory ```cd path/to/word-frequency-js``` and type ```open word-frequency.html```
 
 
 ## Technologies Used
