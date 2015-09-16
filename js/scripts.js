@@ -1,23 +1,28 @@
-var isPalindrome = function(word) {
-  var myWordArray = word.toLowerCase().replace(/\W+/g, "").split("");
-  var leftIndex = 0;
-  var rightIndex = myWordArray.length - 1;
-
-  while (leftIndex <= rightIndex) {
-    if (myWordArray[leftIndex] === myWordArray[rightIndex]) {
-      leftIndex += 1;
-      rightIndex -= 1;
-    } else {
-      return false;
-    }
-  }
-  return true;
+var wordFrequency = function(text) {
+  return createObjectHash(convertTextToArray(text));
 }
 
+var convertTextToArray = function(text) {
+  return text.toLowerCase().replace(/[^\w\s]/ig, "").split(" ");
+};
+
+var createObjectHash = function(array) {
+  var hash = {};
+  for (var i in array){
+    var key = array[i];
+    if (hash[key] === undefined){
+      hash[key] = 1;
+    } else {
+      hash[key] += 1;
+    }
+  }
+  return hash;
+};
+
 $(document).ready(function() {
-  $("form#palindrome").submit(function(event) {
-    var word = $("input#word").val();
-    var result = isPalindrome(word);
+  $("form#wordorder").submit(function(event) {
+    var text = $("input#text").val();
+    var result = wordFrequency(text);
 
       $(".word").text(word);
       if (!result) {

@@ -1,13 +1,15 @@
-describe("isPalindrome", function() {
-  it("returns true if message is a palindrome", function() {
-    expect(isPalindrome("Starats")).to.equal(true);
+describe("convertTextToArray", function() {
+  it("returns only words split into an array", function() {
+    var text = "Stackoverflow's users... are, awesome!!!";
+    var array = ["stackoverflows", "users", "are", "awesome"];
+    expect(convertTextToArray(text)).to.eql(array);
   });
+});
 
-  it("returns false if message is a palindrome", function() {
-    expect(isPalindrome("hello")).to.equal(false);
-  });
-
-  it("returns true if message is a palindrome", function() {
-    expect(isPalindrome("Was it a cat I saw?")).to.equal(true);
+describe("createObjectHash", function() {
+  it("returns a list of all the unique words and how many times they appeared", function() {
+    var array = ["java", "js", "js", "java", "android", "mocha"];
+    var hash = {java: 2, js: 2, android: 1, mocha: 1};
+    expect(createObjectHash(array)).to.eql(hash);
   });
 });
